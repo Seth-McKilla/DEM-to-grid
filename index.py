@@ -13,6 +13,6 @@ print(f'W: {width} H: {height}')
 data = dataset.read(1).astype('float64')
 
 # Create output bathymetry file
-with open('output/bed.dep', 'w') as f:
+with open('output/bathy.dep', 'w') as f:
     for x in np.nditer(data):
         f.write(f'{x} ')
