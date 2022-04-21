@@ -9,7 +9,7 @@ height = dataset.height
 # Read the data from the GeoTIFF
 data = dataset.read(1).astype("float")
 data = np.round(data * 0.3048, 6)  # Convert to meters and set precision
-data[(data < -1e10) | (data > 2e10)] = 0  # Set nodata values to 0
+data[(data < -1e10) | (data > 1e10)] = 0  # Set nodata values to 0
 
 # Create output bathymetry file
 counter = 0
