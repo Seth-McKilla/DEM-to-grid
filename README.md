@@ -1,2 +1,3 @@
 # DEM-to-grid
-Python package to convert Digital Elevation Model (DEM) to bathymetric grid files to be used with XBeach
+
+Python package to convert GeoTIFF exported from CAD into bathy.dep file to be used with XBeach
