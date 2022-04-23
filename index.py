@@ -2,7 +2,7 @@ import numpy as np
 import rasterio
 
 # Open the GeoTIFF using the GDAL format driver
-dataset = rasterio.open("./data/topo.tif")
+dataset = rasterio.open("./data/topo_proposed.tif")
 width = dataset.width
 height = dataset.height
 
@@ -24,7 +24,7 @@ with open("output/bathy.dep", "w") as f:
         counter += 1
     print("Done!")
 
-bathy = np.loadtxt("output/bathy.dep")
+bathy = np.loadtxt("output/bathy_proposed.dep")
 bathy = bathy[:, ~np.all(bathy > 1e5, axis = 0)]
 bathy = bathy[~np.all(bathy > 1e5, axis = 1), :]
 np.savetxt("output/bathy.dep", bathy, fmt = "%f")
