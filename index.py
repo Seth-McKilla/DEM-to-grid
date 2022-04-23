@@ -1,8 +1,10 @@
 import numpy as np
 import rasterio
 
+phase = "existing"
+
 # Open the GeoTIFF using the GDAL format driver
-dataset = rasterio.open("./data/topo_proposed.tif")
+dataset = rasterio.open(f"./data/topo_{phase}.tif")
 width = dataset.width
 height = dataset.height
 
@@ -13,7 +15,7 @@ data = np.round(data, 6)  # Convert to meters and set precision
 # Create output bathymetry file
 counter = 0
 
-with open("output/bathy.dep", "w") as f:
+with open(f"output/bathy_{phase}.dep", "w") as f:
     print("Writing output bathymetry file...")
     for x in np.nditer(data):
         if counter == width:
@@ -24,7 +26,7 @@ with open("output/bathy.dep", "w") as f:
         counter += 1
     print("Done!")
 
-bathy = np.loadtxt("output/bathy_proposed.dep")
+bathy = np.loadtxt(f"output/bathy_{phase}.dep")
 bathy = bathy[:, ~np.all(bathy > 1e5, axis = 0)]
 bathy = bathy[~np.all(bathy > 1e5, axis = 1), :]
-np.savetxt("output/bathy.dep", bathy, fmt = "%f")
+np.savetxt(f"output/bathy_{phase}.dep", bathy, fmt = "%f")
