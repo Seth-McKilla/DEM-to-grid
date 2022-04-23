@@ -1,7 +1,7 @@
 import numpy as np
 import rasterio
 
-phase = "existing"
+phase = "proposed"
 
 # Open the GeoTIFF using the GDAL format driver
 dataset = rasterio.open(f"./data/topo_{phase}.tif")
